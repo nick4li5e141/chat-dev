@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akeena</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>Akeena</h1>
+        </header>
+        <section class="chat-box" id="chatBox">
+            <h2 class="visually-hidden h2tag"><strong></strong></h2>
+            <div class="message" id="messages"></div>
+        </section>
+        <div class="input-group chat-input-group">
+            <button class="btn-mic" aria-label="Toggle recording">
+                <img src="microphone-svgrepo-com.svg" height="20">
+            </button>&nbsp;
+            <input type="text" id="userInput" class="form-input" placeholder="Say something..." aria-label="Type your message here">
+            <button class="btn-send" aria-label="Send message">Send</button>&nbsp;
+            <button class="btn-stop" aria-label="Stop generation">
+                <img src="stop-button-svgrepo-com.svg" height="15rem">
+            </button>
+            <button class="btn-speaker" aria-label="Toggle TTS">
+                <img src="Speaker_Icon.svg" height="20">
+            </button>&nbsp;
+        </div>
+        <audio id="audio" controls hidden></audio>
+    </div>
+
+    <script src="app.js"></script> 
+</body>
+</html>

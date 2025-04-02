@@ -1,0 +1,225 @@
+body {
+    background-color: #333;
+    color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+}
+
+.chat-container {
+    width: 100%; /* Use full width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #555;
+    border: none;
+    transition: background-color 0.3s ease; /* Add transition for smooth background change */
+}
+
+.chat-header {
+    background-color: #444;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.5em; /* Increased size for readability */
+}
+
+.chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.5em; /* Larger text for messages */
+    line-height: 1.6; /* Improved readability with line height */
+}
+
+.user-message, .bot-message {
+    color: white;
+}
+
+.user-message {
+    background-color: #3b4a58;
+    text-align: right;
+}
+
+.bot-message {
+    background-color: #868e96;
+    text-align: left;
+}
+
+.message code {
+    background: #1e1e1e;/*openai like format*/
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.message pre {
+    background: #1e1e1e; 
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    color: #f8f8f2; 
+}
+
+.input-group {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    border-top: 1px solid #444; /* Added border to separate input group */
+}
+
+.form-input {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #666;
+    background-color: #222;
+    color: #ddd;
+    font-size: 1.5em; /* Larger text for input */
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.btn-mic {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-mic img {
+    height: 20px;
+    transition: filter 0.3s, box-shadow 0.3s;
+
+     transition: filter 0.3s, box-shadow 0.3s;
+     border: none;
+     border-radius: 5px;
+ }
+
+.btn-mic.recording img {
+    filter: none;
+    box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.7); /* Red Glow effect */
+}
+/* 
+.chat-container.recording {
+    background-color: #777;
+} */
+
+.btn-stop {
+    padding: 15px 14px;
+    background-color:#f6f6f6 ;
+    color: white;
+    border: none;
+    font-size: 1.5em; /* Larger text for button */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-send {
+    padding: 15px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1.5em; /* Larger text for button */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.h2tag {
+    text-align: center;
+}
+
+.btn-stop:hover {
+    background-color:#7c7c7c ;
+}
+.btn-mic:hover {
+    background-color:#7c7c7c ;
+}
+.btn-send:hover {
+    background-color: #0056b3;
+}
+
+.btn-send:disabled {
+    background-color: #0056b3; /* Background color when disabled */
+    cursor: not-allowed; /* Change cursor to not-allowed when disabled */
+}
+
+/* Recording disabled message */
+#recording-disabled-message {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Media query for mobile devices to adjust text size */
+@media (max-width: 768px) {
+    .chat-header, .message, .form-input, .btn-send {
+        font-size: 1.2em; /* Adjusted text size on mobile */
+    }
+
+    .chat-box, .input-group {
+        padding: 5px; /* Reduced padding for mobile */
+    }
+
+    .message {
+        padding: 5px; /* Smaller padding for messages on mobile */
+    }
+
+    .form-input, .btn-send {
+        padding: 10px; /* Adjusted padding for input and button on mobile */
+    }
+}
+.mic-container {
+    position: relative;
+    display: inline-block;
+}
+
+.mic-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: scale(0);
+    transition: transform 0.1s;
+}
+
+.btn-mic.recording .mic-animation {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
+}
